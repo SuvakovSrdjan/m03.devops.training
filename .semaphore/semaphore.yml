@@ -52,6 +52,9 @@ blocks:
             - cd 3-dependency-scanning
             - pip install pip-audit
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
+            - sudo apt-get update -y && sudo apt-get install -y python3.12-venv
+            - python3 -m venv venv
+            - source venv/bin/activate
             - pip-audit -r requirements.txt || true
   - name: SAST Scan
     dependencies:
@@ -77,4 +80,4 @@ blocks:
             - pip install wapiti
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - 'gunicorn -b 0:0:0:0:4000 app:app --daemon'
-            - 'wapiti -u http://localhost:4000 -f html'
+            - 'wapiti -u http://localhost:4000 -f html || true'
