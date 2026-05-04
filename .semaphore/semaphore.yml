@@ -67,7 +67,7 @@ blocks:
             - cd 4-sast
             - pip install bandit
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
-            - bandit -r vulnerable_script.py || true
+            - bandit -r vulnerable_script.py
   - name: DAST-scan
     dependencies:
       - SAST Scan
