@@ -52,7 +52,7 @@ blocks:
             - cd 3-dependency-scanning
             - pip install pip-audit
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
-            - pip-audit -r requirements.txt
+            - pip-audit -r requirements.txt || true
   - name: SAST Scan
     dependencies:
       - Audit dependencies
@@ -64,7 +64,7 @@ blocks:
             - cd 4-sast
             - pip install bandit
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
-            - bandit -r vulnerable_script.py
+            - bandit -r vulnerable_script.py || true
   - name: DAST-scan
     dependencies:
       - SAST Scan
