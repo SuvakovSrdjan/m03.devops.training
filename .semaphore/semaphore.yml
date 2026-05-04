@@ -36,6 +36,8 @@ blocks:
       jobs:
         - name: Sbom
           commands:
+            - checkout
+            - cd 2-sbom
             - pip install cyclonedx-bom
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - cyclonedx-py requirements -o bom.json
