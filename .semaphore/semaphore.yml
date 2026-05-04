@@ -77,6 +77,10 @@ blocks:
           commands:
             - checkout
             - cd 5-dast
+            - sudo apt-get update -y && sudo apt-get install -y python3.12-venv
+            - python3 -m venv venv
+            - source venv/bin/activate
+            - pip install pip-audit
             - pip install wapiti
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - 'gunicorn -b 0:0:0:0:4000 app:app --daemon'
