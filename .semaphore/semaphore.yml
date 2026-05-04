@@ -37,4 +37,5 @@ blocks:
         - name: Sbom
           commands:
             - pip install cyclonedx-bom
+            - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - cyclonedx-py requirements -o bom.json
