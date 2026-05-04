@@ -27,3 +27,14 @@ blocks:
             - gpg --verify artifact.txt.sig artifact.txt
       secrets:
         - name: gpg_key_srdjan
+  - name: SBOM
+    dependencies:
+      - "\U0001F9EA Test"
+    task:
+      secrets:
+        - name: gpg_key_srdjan
+      jobs:
+        - name: Sbom
+          commands:
+            - pip install cyclonedx-bom
+            - cyclonedx-py requirements -o bom.json
