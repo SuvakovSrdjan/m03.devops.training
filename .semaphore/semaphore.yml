@@ -80,8 +80,7 @@ blocks:
             - sudo apt-get update -y && sudo apt-get install -y python3.12-venv
             - python3 -m venv venv
             - source venv/bin/activate
-            - pip install pip-audit
-            - pip install wapiti
+            - pip install wapiti3
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - 'gunicorn -b 0:0:0:0:4000 app:app --daemon'
             - 'wapiti -u http://localhost:4000 -f html || true'
