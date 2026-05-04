@@ -41,3 +41,14 @@ blocks:
             - pip install cyclonedx-bom
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - cyclonedx-py requirements -o bom.json
+  - name: Audit dependencies
+    dependencies:
+      - SBOM
+    task:
+      jobs:
+        - name: audit
+          commands:
+            - checkout
+            - cd 3-dependency-scanning
+            - 'pip-audit: pip install pip-audit'
+            - pip-audit -r requirements.txt
