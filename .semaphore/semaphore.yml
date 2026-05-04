@@ -50,11 +50,11 @@ blocks:
           commands:
             - checkout
             - cd 3-dependency-scanning
-            - pip install pip-audit
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - sudo apt-get update -y && sudo apt-get install -y python3.12-venv
             - python3 -m venv venv
             - source venv/bin/activate
+            - pip install pip-audit
             - pip-audit -r requirements.txt || true
   - name: SAST Scan
     dependencies:
